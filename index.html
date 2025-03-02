@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 تبديل المشاعر</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .emoji {
+            font-size: 100px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .change {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+        }
+
+        /* زر التغيير */
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji" id="emoji">😊</div>
+    <h1 id="text">أنا سعيد 😊</h1>
+    <button onclick="changeFace()">🎭 غير حالتي</button>
+
+    <script>
+        let emotions = [
+            { emoji: "😊", text: "أنا سعيد 😊" },
+            { emoji: "😢", text: "أنا حزين 😢" },
+            { emoji: "😂", text: "أنا أضحك 😂" },
+            { emoji: "😡", text: "أنا غاضب 😡" },
+            { emoji: "😱", text: "أنا مصدوم 😱" },
+            { emoji: "🥱", text: "أنا أشعر بالملل 🥱" }
+        ];
+
+        let index = 0;
+
+        function changeFace() {
+            index = (index + 1) % emotions.length; // التبديل بين الحالات
+            let emoji = document.getElementById('emoji');
+            let text = document.getElementById('text');
+
+            emoji.innerHTML = emotions[index].emoji;
+            text.innerHTML = emotions[index].text;
+            emoji.classList.add('change');
+
+            setTimeout(() => emoji.classList.remove('change'), 500);
+        }
+    </script>
+</body>
+</html>
